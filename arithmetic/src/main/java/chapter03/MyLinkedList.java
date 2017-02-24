@@ -166,6 +166,14 @@ public class MyLinkedList<T> implements Iterable<T> {
         l.add("300");
         l.add("400");
         l.add("500");
-        System.out.println(l.get(5)); //throw new ArrayIndexOutOfBoundsException
+//        System.out.println(l.get(5)); //throw new ArrayIndexOutOfBoundsException
+
+        Iterator<String> it = linkedList.iterator();
+        while (it.hasNext()) {
+            if ("400".equals(it.next())) {
+                it.remove();
+            }
+        }
+        System.out.println("ok");
     }
 }

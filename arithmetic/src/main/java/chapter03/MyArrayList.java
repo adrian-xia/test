@@ -127,6 +127,9 @@ public class MyArrayList<T> implements Iterable<T> {
         for (String s : arrayList) {
             System.out.println(s);
         }
+
+
+
     }
 
 }
