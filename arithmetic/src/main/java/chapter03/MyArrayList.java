@@ -56,6 +56,7 @@ public class MyArrayList<T> implements Iterable<T> {
             return;
         }
         T[] old = items;
+        int length = items.length;
         items = (T[]) new Object[newCapacity];
         for (int i = 0; i < size(); i++) {
             items[i] = old[i];
