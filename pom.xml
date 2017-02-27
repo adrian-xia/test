@@ -14,6 +14,7 @@
         <module>netty</module>
         <module>arithmetic</module>
         <module>mongo</module>
+        <module>redis</module>
     </modules>
 
     <properties>
