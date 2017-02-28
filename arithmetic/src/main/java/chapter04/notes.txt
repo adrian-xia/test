@@ -1,0 +1,39 @@
+树
+
+class Tree {
+    Object element; 元素
+    TreeNode firstChild; 子节点
+    TreeNode nextSibling; 下一个兄弟节点
+}
+
+树的遍历和应用
+先序遍历
+首先访问根结点然后遍历左子树，最后遍历右子树。
+在遍历左、右子树时，仍然先访问根结点，然后遍历左子树，最后遍历右子树，如果二叉树为空则返回。
+后序遍历
+后序遍历首先遍历左子树，然后遍历右子树，最后访问根结点，在遍历左、右子树时，仍然先遍历左子树，然后遍历右子树，最后遍历根结点。
+
+public class TreeNode{
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) {
+        val = x;
+    }
+}
+public void postOrder(TreeNode biTree){
+    TreeNode leftTree = biTree.left;
+    if (leftTree != null) {
+        postOrder(leftTree);
+    }
+    TreeNode rightTree = biTree.right;
+    if(rightTree != null){
+        postOrder(rightTree);
+    }
+    System.out.printf(biTree.val + "");
+}
+
+二叉树(binary tree)
+每个节点都不能有多于两个的子节点。
+
+
