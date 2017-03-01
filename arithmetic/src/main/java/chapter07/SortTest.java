@@ -23,9 +23,27 @@ public class SortTest {
         }
     }
 
+    /**
+     * 希尔排序
+     * @param a
+     * @param <T>
+     */
+    public static <T extends Comparable<? super T>> void shellSort(T[] a) {
+        int j;
+        for (int gap = a.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < a.length; i++) {
+                T tmp = a[i];
+                for (j = i; j >= gap && tmp.compareTo(a[j - gap]) < 0; j -= gap) {
+                    a[j] = a[j - gap];
+                }
+                a[j] = tmp;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Integer[] a = new Integer[] {50, 29, 47, 86, 30};
-        insertionSort(a);
+        shellSort(a);
         for (Integer i : a) {
             System.out.println(i + ",");
         }
