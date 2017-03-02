@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClass}"/>
+        <property name="url" value="jdbc:mysql://${jdbc.address}?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!--连接池配置-->
+        <property name="initialSize" value="${connection.pool.initialSize}" />
+        <property name="maxActive" value="${connection.pool.maxActive}" />
+        <property name="maxIdle" value="${connection.pool.maxIdle}" />
+        <property name="minIdle" value="${connection.pool.minIdle}" />
+        <property name="maxWait" value="${connection.pool.maxWait}" />
+        <property name="poolPreparedStatements" value="${connection.pool.poolPreparedStatements}" />
+        <property name="defaultAutoCommit" value="${connection.pool.defaultAutoCommit}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${connection.pool.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${connection.pool.minEvictableIdleTimeMillis}"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath*:sqlmap/*.xml"/>
+    </bean>
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.adrian.mybatistest.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!-- 本地数据源事务管理 -->
+    <bean id="localTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 开启本地注解事务 -->
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="localTransactionManager"/>
+</beans>
