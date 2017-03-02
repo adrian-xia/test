@@ -15,6 +15,10 @@
         <module>arithmetic</module>
         <module>mongo</module>
         <module>redis</module>
+        <module>springsession</module>
+        <module>mongoguide</module>
+        <module>datastructure</module>
+        <module>springdata</module>
     </modules>
 
     <properties>
