@@ -1,6 +1,7 @@
 package zju.chapter01.concept;
 
 /**
+ * 二项式练习
  * Created by xialei on 2017/3/1.
  */
 public class Polynomial {
