@@ -2,7 +2,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.adrian.mybatistest.dao.UserMapper">
 
-    <resultMap id="resultMap" type="UserDO">
+    <resultMap id="resultMap" type="org.adrian.mybatistest.domain.UserDO">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>

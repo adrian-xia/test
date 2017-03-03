@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  ">
+
+    <!--此处加载config文件夹下的properties文件-->
+    <context:property-placeholder location="classpath:config/*.properties" ignore-unresolvable="true" file-encoding="utf-8"/>
+    <import resource="spring-mvc.xml"/>
+    <import resource="spring-datasource.xml"/>
+
+    <context:annotation-config />
+    <context:component-scan base-package="org.adrian.mybatistest">
+        <context:exclude-filter type="regex" expression=".*Controller$"/>
+    </context:component-scan>
+</beans>

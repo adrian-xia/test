@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- mybatis各种标签有节点顺序，如果顺序不对，启动时会报错 -->
+    <!--properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,
+    objectWrapperFactory?,reflectorFactory?,plugins?,environments?,
+    databaseIdProvider?,mappers?-->
+    <typeAliases>
+        <package name="org.adrian.mybatistest.domain"/>
+    </typeAliases>
+    <typeHandlers>
+        <package name="org.adrian.mybatistest.mybatis.handler"/>
+    </typeHandlers>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis-test?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="sqlmap/UserMapper.xml"/>
+    </mappers>
+
+</configuration>
