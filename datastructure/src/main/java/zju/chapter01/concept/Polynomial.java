@@ -33,8 +33,10 @@ public class Polynomial {
         for(i = a.length - 1; i > 0; i--){
             p = a[i - 1] + x * p;//此处只有一个乘法操作
         }
-        return 0;
+        return p;
     }
+
+    private static int max = 100;
 
     /**
      * 当循环的复杂度一致的时候
@@ -43,8 +45,9 @@ public class Polynomial {
      * @param args
      */
     public static void main(String[] args) {
-        double[] a = new double[10];
-        double x = 10;
+        double[] a = new double[max];
+        for (int i = 0; i < max; i++) a[i] = i;
+        int x = 10;
         long start = System.currentTimeMillis();
         double result = function(a, x);
         long executeTime = System.currentTimeMillis() - start;

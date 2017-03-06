@@ -37,4 +37,15 @@ public class TestSessionFactory {
         }
     }
 
+    @Test
+    public void sessionSelectOne() {
+        SqlSession sqlSession = sessionFactory.openSession();
+        try {
+            UserDO userDO = sqlSession.selectOne("org.adrian.mybatistest.dao.UserMapper.selectOne", 1L);
+            System.out.println(userDO);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 }
