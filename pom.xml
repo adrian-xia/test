@@ -19,6 +19,7 @@
         <module>mongoguide</module>
         <module>datastructure</module>
         <module>springdata</module>
+        <module>springbatch</module>
     </modules>
 
     <properties>
