@@ -21,6 +21,7 @@
         <module>springdata</module>
         <module>springbatch</module>
         <module>jvm</module>
+        <module>houbank</module>
     </modules>
 
     <properties>
