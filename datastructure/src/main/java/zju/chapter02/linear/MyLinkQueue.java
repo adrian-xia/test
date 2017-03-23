@@ -3,7 +3,7 @@ package zju.chapter02.linear;
 /**
  * Created by adrian on 2017/3/23.
  */
-public class MyLinkQuene<T> {
+public class MyLinkQueue<T> {
 
     private Node front;
     private Node rear;
@@ -49,13 +49,15 @@ public class MyLinkQuene<T> {
     }
 
     public static void main(String[] args) {
-        MyLinkQuene<String> myQuene = new MyLinkQuene<>();
-        System.out.println(myQuene.isEmpty());
-        myQuene.add("One");
-        myQuene.add("two");
-        System.out.println(myQuene.delete());
-        System.out.println(myQuene.delete());
-        System.out.println(myQuene.isEmpty());
+        MyLinkQueue<String> myQueue = new MyLinkQueue<>();
+        System.out.println(myQueue.isEmpty());
+        myQueue.add("One");
+        myQueue.add("two");
+        System.out.println(myQueue.delete());
+        System.out.println(myQueue.delete());
+        System.out.println(myQueue.isEmpty());
+        myQueue.add("three");
+        System.out.println(myQueue.delete());
     }
 
 }
