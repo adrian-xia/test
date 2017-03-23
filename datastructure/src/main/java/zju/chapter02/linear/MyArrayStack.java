@@ -1,46 +1,51 @@
 package zju.chapter02.linear;
 
-import java.util.ArrayList;
-
 /**
  * Created by adrian on 2017/3/23.
  */
-public class MyStack<T> {
+public class MyArrayStack<T> {
 
-    private ArrayList<T> list;
+    private Object[] arr;
+
+    private int top;
+
     private int maxSize;
 
-    public MyStack(int maxSize) {
+    public MyArrayStack(int maxSize) {
         this.maxSize = maxSize;
-        this.list = new ArrayList<>(maxSize);
+        this.top = 0;
+        this.arr = new Object[maxSize];
     }
 
     public boolean isFull() {
-        return list.size() == maxSize;
+        return top == maxSize;
     }
 
     public void push(T e) {
         if (isFull()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        list.add(e);
+        top++;
+        arr[top - 1] = e;
     }
 
     public boolean isEmpty() {
-        return list.size() == 0;
+        return top == 0;
     }
 
+    @SuppressWarnings("unchecked")
     public T pop() {
         if (isEmpty()) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        T result = list.get(list.size() - 1);
-        list.remove(result);
+        T result = (T)arr[top - 1];
+        arr[top - 1] = null;
+        top--;
         return result;
     }
 
     public static void main(String[] args) {
-        MyStack<String> myStack = new MyStack<>(10);
+        MyArrayStack<String> myStack = new MyArrayStack<>(10);
         System.out.println("myStack.isEmpty() = " + myStack.isEmpty());
         myStack.push("one");
         myStack.push("two");
