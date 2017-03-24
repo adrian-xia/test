@@ -14,9 +14,9 @@ public class TestDiv {
      *
      * @param args
      */
-    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         System.out.println("1.0 / 0.0 = " + 1.0 / 0.0);
         System.out.println("0.0 / 0.0 = " + 0.0 / 0.0);
+        System.out.println("大整数" + 2147483647);
     }
 }
