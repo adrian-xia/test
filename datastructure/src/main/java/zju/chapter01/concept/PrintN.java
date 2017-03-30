@@ -19,8 +19,8 @@ public class PrintN {
      */
     public static void printNM2(int n) {
         if (n != 0) {
-            printNM2(n - 1);
             System.out.println(n);
+            printNM2(n - 1);
         }
     }
 
