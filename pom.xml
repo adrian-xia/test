@@ -22,6 +22,7 @@
         <module>springbatch</module>
         <module>jvm</module>
         <module>houbank</module>
+        <module>rabbitmq</module>
     </modules>
 
     <properties>
