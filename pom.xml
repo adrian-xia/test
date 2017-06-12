@@ -24,6 +24,7 @@
         <module>houbank</module>
         <module>rabbitmq</module>
         <module>springkafka</module>
+        <module>nio</module>
     </modules>
 
     <properties>
