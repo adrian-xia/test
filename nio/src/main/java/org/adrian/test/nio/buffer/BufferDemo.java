@@ -1,4 +1,4 @@
-package org.adrian.test.nio;
+package org.adrian.test.nio.buffer;
 
 
 import java.nio.CharBuffer;
