@@ -6,9 +6,14 @@ import java.nio.channels.SocketChannel;
 
 public class ConnectAsync {
 
+    /**
+     * 此处连接需要有服务端创建server连接，此处才能连接上
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
-        String host = "127.0.0.1";
-        int port = 8080;
+        String host = "192.168.19.138";
+        int port = 9080;
         if (args.length == 2) {
             host = args[0];
             port = Integer.parseInt(args[1]);
