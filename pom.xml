@@ -25,6 +25,7 @@
         <module>rabbitmq</module>
         <module>springkafka</module>
         <module>nio</module>
+        <module>xvcode</module>
     </modules>
 
     <properties>
