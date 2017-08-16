@@ -21,16 +21,19 @@
         <module>springdata</module>
         <module>springbatch</module>
         <module>jvm</module>
-        <module>houbank</module>
         <module>rabbitmq</module>
         <module>springkafka</module>
         <module>nio</module>
         <module>xvcode</module>
+        <module>concurrent</module>
     </modules>
 
     <properties>
         <java.encoding>UTF-8</java.encoding>
         <java.version>1.8</java.version>
+        <org.slf4j-version>1.7.12</org.slf4j-version>
+        <logback.version>1.1.7</logback.version>
+        <logback-ext-spring.version>0.1.2</logback-ext-spring.version>
     </properties>
 
     <dependencies>
