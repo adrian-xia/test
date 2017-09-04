@@ -1,6 +1,5 @@
 package org.adrian.test.concurrent.artconcurrent.chapter06;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 import java.util.concurrent.RecursiveTask;

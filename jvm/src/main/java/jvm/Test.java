@@ -8,15 +8,11 @@ import java.util.List;
  */
 public class Test {
 
-    public static void main(String[] args) {
-        List<Integer> main = new ArrayList<>();
-        main.add(0, 0);
-        main.add(1, 1);
-        main.add(2, 2);
-        main.add(3, 3);
-        main.add(4, 4);
-        main.subList(1, 3);
+    public static void main(String[] args) throws Exception {
+        Runtime.getRuntime().exec("pwd");
+        Runtime.getRuntime().exec("ls");
 
+        Test.class.getClassLoader();
     }
 
 }
