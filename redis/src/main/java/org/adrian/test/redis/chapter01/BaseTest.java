@@ -51,4 +51,19 @@ public class BaseTest {
         System.out.println(jedis.smembers("set-key"));
     }
 
+    @Test
+    public void testHash() {
+
+    }
+
+    @Test
+    public void testZSet() {
+
+    }
+
+    @Test
+    public void testNx() {
+
+    }
+
 }

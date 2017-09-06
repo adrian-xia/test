@@ -80,6 +80,9 @@ public class BlockingQueueTest {
         queue.take();
     }
 
+    /**
+     * 使用CAS
+     */
     @Test
     public void testLinkTransferQueue() throws InterruptedException {
         LinkedTransferQueue<Integer> queue = new LinkedTransferQueue<>();
