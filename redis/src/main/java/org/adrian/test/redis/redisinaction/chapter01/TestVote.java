@@ -1,8 +1,9 @@
-package org.adrian.test.redis.chapter01;
+package org.adrian.test.redis.redisinaction.chapter01;
 
 import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ZParams;
 
 import java.util.*;
 
@@ -99,6 +100,21 @@ public class TestVote {
         for (String group : toRemove) {
             conn.srem("group:" + group, article);
         }
+    }
+
+    @Test
+    public void testGetGroupArticles() {
+        System.out.println(getGroupArticles(jedis, "facebook", 1, "score:"));
+    }
+
+    private List<Map<String, String>> getGroupArticles(Jedis conn, String group, int page, String order) {
+        String key = order + group;//检查是否有已缓存的排序结果
+        if (!conn.exists(key)) {
+            ZParams params = new ZParams().aggregate(ZParams.Aggregate.MAX);//todo
+            conn.zinterstore(key, params, "group:" + group, order);
+            conn.expire(key, 60);//缓存60秒
+        }
+        return getArticles(conn, page, key);
     }
 
 

@@ -1,4 +1,4 @@
-package org.adrian.test.redis.chapter01;
+package org.adrian.test.redis.redisinaction.chapter01;
 
 import org.junit.Before;
 import org.junit.Test;
