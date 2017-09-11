@@ -66,4 +66,9 @@ public class BaseTest {
 
     }
 
+    @Test
+    public void testKeys() {
+        System.out.println(jedis.keys("*"));
+    }
+
 }
