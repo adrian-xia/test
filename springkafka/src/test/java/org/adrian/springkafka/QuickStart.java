@@ -27,7 +27,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class QuickStart {
 
-    @Test
+    @SuppressWarnings("deprecation")
+	@Test
     public void testAutoCommit() throws Exception {
         System.out.println("Start auto");
         ContainerProperties containerProps = new ContainerProperties("topic1", "topic2");
