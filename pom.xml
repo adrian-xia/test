@@ -26,6 +26,7 @@
         <module>nio</module>
         <module>xvcode</module>
         <module>concurrent</module>
+        <module>mapstruct</module>
     </modules>
 
     <properties>
