@@ -27,6 +27,9 @@
         <module>xvcode</module>
         <module>concurrent</module>
         <module>mapstruct</module>
+        <module>zookeeper</module>
+        <module>gupao</module>
+        <module>canal</module>
     </modules>
 
     <properties>
@@ -36,6 +39,16 @@
         <logback.version>1.1.7</logback.version>
         <logback-ext-spring.version>0.1.2</logback-ext-spring.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.11</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
