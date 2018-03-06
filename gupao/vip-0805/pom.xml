@@ -3,18 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>test</artifactId>
+        <artifactId>gupao</artifactId>
         <groupId>org.adrian</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gupao</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>vip-0729</module>
-        <module>vip-0805</module>
-    </modules>
+    <artifactId>vip-0805</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+        </dependency>
+    </dependencies>
 
 </project>
