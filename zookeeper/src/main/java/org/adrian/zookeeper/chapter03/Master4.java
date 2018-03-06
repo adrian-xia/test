@@ -60,42 +60,35 @@ public class Master4 implements Watcher {
 
     static boolean isLeader;
 
-    AsyncCallback.StringCallback masterCreateCallback = new AsyncCallback.StringCallback() {
-
-        @Override
-        public void processResult(int rc, String path, Object ctx, String name) {
-            switch (KeeperException.Code.get(rc)) {
-                case OK:
-                    isLeader = true;
-                    break;
-                case CONNECTIONLOSS:
-                    checkMaster();
-                    break;
-                default:
-                    isLeader = false;
-            }
-            System.out.println("I'm " + (isLeader ? "" : "not ") + "the leader");
+    AsyncCallback.StringCallback masterCreateCallback = (rc, path, ctx, name) -> {
+        switch (KeeperException.Code.get(rc)) {
+            case OK:
+                isLeader = true;
+                break;
+            case CONNECTIONLOSS:
+                checkMaster();
+                break;
+            default:
+                isLeader = false;
         }
+        System.out.println("I'm " + (isLeader ? "" : "not ") + "the leader");
     };
 
     void runForMaster() {
         zk.create("/master", serverId.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL, masterCreateCallback, null);
     }
 
-    AsyncCallback.DataCallback masterCheckCallback = new AsyncCallback.DataCallback() {
-        @Override
-        public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
-            switch (KeeperException.Code.get(rc)) {
-                case OK:
-                    isLeader = new String(data).equals(serverId);
-                    return;
-                case CONNECTIONLOSS:
-                    checkMaster();
-                    return;
-                case NONODE:
-                    runForMaster();
-                    return;
-            }
+    AsyncCallback.DataCallback masterCheckCallback = (int rc, String path, Object ctx, byte[] data, Stat stat) -> {
+        switch (KeeperException.Code.get(rc)) {
+            case OK:
+                isLeader = new String(data).equals(serverId);
+                return;
+            case CONNECTIONLOSS:
+                checkMaster();
+                return;
+            case NONODE:
+                runForMaster();
+                return;
         }
     };
 
