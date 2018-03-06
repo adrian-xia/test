@@ -1,4 +1,4 @@
-package org.adrian.zookeeper.watcher;
+package org.adrian.zookeeper.chapter03;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.zookeeper.*;

@@ -1,4 +1,4 @@
-package org.adrian.zookeeper.watcher;
+package org.adrian.zookeeper.chapter03;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
