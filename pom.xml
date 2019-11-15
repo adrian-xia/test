@@ -31,6 +31,8 @@
         <module>gupao</module>
         <module>canal</module>
         <module>serialize</module>
+        <module>rocketmq</module>
+        <module>poi</module>
     </modules>
 
     <properties>
