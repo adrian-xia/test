@@ -50,4 +50,9 @@ public class StringTest {
         String f = new String("ja") + new String("va");
         System.out.println(f.intern() == f);//false, "java"关键字在虚拟机中存在
     }
+
+    @Test
+    public void testSplit() {
+        System.out.println("1;".split(";").length);
+    }
 }
