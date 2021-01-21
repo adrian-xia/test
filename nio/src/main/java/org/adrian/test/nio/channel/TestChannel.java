@@ -2,10 +2,7 @@ package org.adrian.test.nio.channel;
 
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
@@ -23,40 +20,40 @@ import java.util.Set;
 /*
  * 一、通道（Channel）：用于源节点与目标节点的连接。在 Java NIO 中负责缓冲区中数据的传输。
  * 	Channel 本身不存储数据，因此需要配合缓冲区进行传输。
- * 
+ *
  * 二、通道的主要实现类
  * 	java.nio.channels.Channel 接口：
  * 		|--FileChannel
  * 		|--SocketChannel
  * 		|--ServerSocketChannel
  * 		|--DatagramChannel
- * 
+ *
  * 三、获取通道
  * 1. Java 针对支持通道的类提供了 getChannel() 方法
  * 		本地 IO：
  * 		FileInputStream/FileOutputStream
  * 		RandomAccessFile
- * 
+ *
  * 		网络IO：
  * 		Socket
  * 		ServerSocket
  * 		DatagramSocket
- * 		
+ *
  * 2. 在 JDK 1.7 中的 NIO.2 针对各个通道提供了静态方法 open()
  * 3. 在 JDK 1.7 中的 NIO.2 的 Files 工具类的 newByteChannel()
- * 
+ *
  * 四、通道之间的数据传输
  * transferFrom()
  * transferTo()
- * 
+ *
  * 五、分散(Scatter)与聚集(Gather)
  * 分散读取（Scattering Reads）：将通道中的数据分散到多个缓冲区中
  * 聚集写入（Gathering Writes）：将多个缓冲区中的数据聚集到通道中
- * 
+ *
  * 六、字符集：Charset
  * 编码：字符串 -> 字节数组
  * 解码：字节数组  -> 字符串
- * 
+ *
  */
 public class TestChannel {
 
@@ -241,5 +238,34 @@ public class TestChannel {
         System.out.println("耗费时间为：" + (end - start));
 
     }
+
+    @Test
+    public void mapTest() throws Exception {
+        File file = new File("/Users/adrian/Downloads/tmp/MappedByteBuffer.txt");
+        RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
+        FileChannel channel = randomAccessFile.getChannel();
+        ByteBuffer byteBuffer = ByteBuffer.allocate(5 * 1024 * 1024);
+        for (int i = 0; i < 1000; i++) {
+            byteBuffer.putLong(Long.MAX_VALUE);
+        }
+        System.out.println(byteBuffer.position());
+//        MappedByteBuffer map = channel.map(MapMode.READ_WRITE, 3 * 64 * 1000, 20 * 1024 * 1024);
+//        map.put(byteBuffer.array(), 0, 5 * 1024 * 1024);
+//        map.force();
+//        channel.close();
+    }
+
+    @Test
+    public void mapGetTest() throws Exception {
+        File file = new File("/Users/adrian/Downloads/tmp/MappedByteBuffer.txt");
+        RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
+        FileChannel channel = randomAccessFile.getChannel();
+        MappedByteBuffer map = channel.map(MapMode.READ_WRITE, 0, 5 * 1024 * 1024);
+        for (int i = 0; i < 100000; i++) {
+            System.out.println(map.getLong());
+        }
+        System.out.println(map.getLong());
+    }
+
 
 }
